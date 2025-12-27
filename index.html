@@ -3,279 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#f1f5f9">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Darka Elegant">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Darka Life</title>
+    
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1146/1146869.png">
-
-    <title>დარყა</title>
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2910/2910768.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
         :root {
-            /* ახალი ელეგანტური პალიტრა */
-            --bg-main: #0f172a; /* ღრმა ღამის ლურჯი */
-            --glass-bg: rgba(30, 41, 59, 0.75); /* უფრო რბილი, ყინულოვანი მინა */
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --accent-gold: #d4af37; /* კლასიკური ოქროსფერი */
-            --accent-blue: #60a5fa;
-            --accent-green: #34d399;
-            --accent-red: #f87171;
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --radius-card: 24px; /* უფრო მომრგვალებული კუთხეები */
-            --radius-pill: 50px;
-            --shadow-soft: 0 20px 40px rgba(0,0,0,0.2);
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --primary: #0f172a;
+            --accent-green: #10b981; /* Hunting */
+            --accent-blue: #3b82f6;  /* Fishing */
+            --accent-orange: #f59e0b; /* Feasting */
+            --radius: 24px;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            /* ახალი, უფრო მშვიდი და ლამაზი ფონი */
-            background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), 
-                              url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px 15px;
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding-bottom: 80px;
+            font-family: 'Inter', 'Noto Sans Georgian', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            margin: 0; padding: 0;
+            padding-bottom: 90px;
         }
 
-        .app-container { max-width: 600px; margin: 0 auto; }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        /* Header & Typography */
-        header { text-align: center; margin-bottom: 30px; }
+        /* HEADER */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 20px; padding-top: 10px;
+        }
+        .logo-area h1 { margin: 0; font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; }
+        .logo-area span { font-size: 0.8rem; color: var(--text-light); font-weight: 600; }
         
-        .location-pill {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main); 
-            padding: 8px 16px; 
-            border-radius: var(--radius-pill);
-            font-size: 0.85rem; font-weight: 500; 
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .location-pill i { color: var(--accent-gold); }
-
-        h1 { 
-            margin: 0; font-size: 2.8rem; font-weight: 800; 
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #fff, #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .subtitle { font-size: 1rem; color: var(--text-muted); font-weight: 400; margin-top: 5px; }
-
-        /* Glassmorphism Cards (Refined) */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(150%); /* უფრო ძლიერი, ლამაზი ბლარი */
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-card);
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-soft);
-            transition: transform 0.3s ease;
+        .gps-badge {
+            background: #e2e8f0; padding: 8px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; color: var(--text-dark);
+            display: flex; align-items: center; gap: 5px;
         }
 
-        /* Hero Section */
-        .hero-top { display: flex; align-items: flex-start; justify-content: space-between; }
-        .temp-huge { 
-            font-size: 5.5rem; font-weight: 800; line-height: 1; 
-            letter-spacing: -3px;
-        }
-        .condition-icon i { 
-            font-size: 5rem; 
-            color: var(--text-main);
-            filter: drop-shadow(0 8px 24px rgba(255,255,255,0.2));
-        }
-        .condition-text { font-size: 1.4rem; font-weight: 600; margin-top: 10px; color: var(--accent-gold); }
-        .feels-like { font-size: 1rem; color: var(--text-muted); font-weight: 500; margin-top: 5px; }
-
-        /* Advice Box (Elegant Gradient) */
-        .advice-box {
-            border-radius: var(--radius-card);
-            padding: 20px; margin-bottom: 25px;
-            display: flex; align-items: center; gap: 20px;
-            box-shadow: var(--shadow-soft);
+        /* VERDICT CARD (The Fun Part) */
+        .verdict-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
             color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            text-align: center;
         }
-        .advice-icon { font-size: 3rem; opacity: 0.9; }
-        .advice-text { font-weight: 700; font-size: 1.3rem; margin-bottom: 4px; }
-        .advice-sub { font-size: 0.95rem; opacity: 0.9; font-weight: 400; }
-
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .stat-box { 
-            background: rgba(255,255,255,0.06); 
-            border-radius: 20px; padding: 20px; 
-            display: flex; flex-direction: column; gap: 8px; 
-            border: 1px solid var(--glass-border);
-            transition: background 0.3s;
+        .verdict-emoji { font-size: 3rem; margin-bottom: 10px; display: block; animation: bounce 2s infinite; }
+        .verdict-title { font-size: 1.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 5px; }
+        .verdict-sub { font-size: 0.9rem; opacity: 0.8; }
+        
+        /* Stats in Verdict */
+        .verdict-stats {
+            display: flex; justify-content: space-between; margin-top: 20px;
+            background: rgba(255,255,255,0.1); padding: 15px; border-radius: 16px;
         }
-        .stat-box:hover { background: rgba(255,255,255,0.09); }
-        .stat-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .stat-label i { color: var(--accent-gold); font-size: 1.1rem; }
-        .stat-value { font-size: 1.4rem; font-weight: 700; }
-        .wind-box { grid-column: span 2; }
-        .wind-val { font-size: 1.6rem; display: flex; align-items: center; gap: 15px; }
+        .v-stat { text-align: center; }
+        .v-val { font-size: 1.2rem; font-weight: 700; }
+        .v-lbl { font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; }
 
-        /* Sections */
-        .section-title { 
-            font-size: 1.1rem; font-weight: 700; margin: 35px 0 15px 5px; 
-            color: var(--text-main); display: flex; align-items: center; gap: 10px; 
+        /* ACTIVITY GRID (Percentages) */
+        .activity-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 30px;
         }
-        .section-title i { color: var(--accent-gold); }
+        .act-card {
+            background: var(--surface); border-radius: 20px; padding: 15px 10px;
+            text-align: center; box-shadow: var(--shadow);
+            transition: transform 0.2s; border: 2px solid transparent;
+        }
+        .act-card:active { transform: scale(0.95); }
+        .act-icon { font-size: 1.8rem; margin-bottom: 5px; }
+        .act-name { font-size: 0.75rem; font-weight: 600; color: var(--text-light); }
+        .act-percent { font-size: 1.1rem; font-weight: 800; margin-top: 2px; }
+        
+        /* Progress Bar inside Card */
+        .progress-bar { height: 4px; width: 100%; background: #e2e8f0; border-radius: 2px; margin-top: 8px; overflow:hidden; }
+        .progress-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
 
-        /* Hourly Scroll */
-        .scroll-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; margin: 0 -15px; padding-left: 15px; padding-right: 15px; scrollbar-width: none; }
+        /* HOURLY SCROLL */
+        .section-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; color: var(--text-dark); display: flex; align-items: center; gap: 8px;}
+        .scroll-container { 
+            display: flex; gap: 12px; overflow-x: auto; padding-bottom: 20px; 
+            margin: 0 -20px; padding-left: 20px; padding-right: 20px;
+            scrollbar-width: none; 
+        }
         .scroll-container::-webkit-scrollbar { display: none; }
-        .hourly-card { 
-            min-width: 80px; background: rgba(255,255,255,0.06); border-radius: 18px; 
-            padding: 15px 10px; text-align: center; border: 1px solid var(--glass-border); 
+        
+        .hour-pill {
+            min-width: 70px; background: var(--surface); padding: 12px; border-radius: 16px;
+            text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;
         }
-        .h-time { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
-        .h-icon { font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main); }
-        .h-temp { font-weight: 700; font-size: 1.1rem; margin-bottom: 6px; }
+        .h-time { font-size: 0.8rem; color: var(--text-light); font-weight: 600; margin-bottom: 5px; }
+        .h-icon { font-size: 1.5rem; margin-bottom: 5px; color: var(--text-dark); }
+        .h-temp { font-weight: 700; font-size: 1rem; }
 
-        /* Daily List */
-        .daily-row { 
-            display: grid; grid-template-columns: 1fr 60px 1fr 50px; align-items: center; 
-            padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08); 
+        /* DAILY LIST */
+        .day-row {
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--surface); padding: 16px; border-radius: 16px;
+            margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
-        .daily-row:last-child { border-bottom: none; }
-        .d-day { font-weight: 700; font-size: 1rem; }
-        .d-date { font-size: 0.8rem; color: var(--text-muted); display: block; font-weight: 500; }
-        .d-icon { font-size: 1.6rem; text-align: center; color: var(--text-main); }
-        .d-temps { text-align: right; font-weight: 700; font-size: 1.1rem; }
-        .d-min { color: var(--text-muted); font-size: 0.95rem; margin-left: 8px; font-weight: 500; }
+        .d-left { display: flex; align-items: center; gap: 15px; }
+        .d-icon { font-size: 1.8rem; color: var(--text-dark); width: 30px; text-align: center;}
+        .d-info h4 { margin: 0; font-size: 1rem; }
+        .d-info span { font-size: 0.8rem; color: var(--text-light); }
+        .d-right { text-align: right; }
+        .d-high { font-weight: 700; font-size: 1.1rem; }
+        .d-low { font-size: 0.9rem; color: var(--text-light); }
+        
+        /* Install Button */
+        #installBtn {
+            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+            background: var(--text-dark); color: white; padding: 14px 28px;
+            border-radius: 50px; border: none; font-weight: 700; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 100; display: none;
+            display: flex; align-items: center; gap: 8px;
+        }
 
-        /* Install Button (Refined) */
-        #installBtn { display: none; position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: var(--accent-gold); color: #000; border: none; padding: 14px 30px; border-radius: var(--radius-pill); font-weight: 700; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); z-index: 100; cursor: pointer; transition: transform 0.2s; }
-        #installBtn:active { transform: translateX(-50%) scale(0.95); }
-
-        /* Loader */
-        .loader-box { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; }
-        .spinner { font-size: 3.5rem; color: var(--accent-gold); animation: spin-slow 3s infinite linear; }
-        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+        /* Animations */
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+        .loader { text-align: center; padding: 50px; }
 
     </style>
 </head>
 <body>
 
-<div class="app-container">
+<div class="container">
     <header>
-        
-        <h1>დარყა</h1>
-        <div class="subtitle">ლაშკინის მეტეო-ცენტრი</div>
+        <div class="logo-area">
+            <h1>დარყა</h1>
+            <span>ლაშკინის მეტეო-ცენტრი</span>
+        </div>
+        <div class="gps-badge" onclick="location.reload()">
+            <i class="ph-bold ph-map-pin"></i> დარყა
+        </div>
     </header>
 
     <div id="app">
-        <div class="glass loader-box">
-            <i class="ph-thin ph-spinner-gap spinner"></i>
-        </div>
+        <div class="loader"><i class="ph-bold ph-spinner-gap" style="font-size: 2rem; animation: spin 1s infinite linear;"></i></div>
     </div>
 
-    <button id="installBtn"><i class="ph-bold ph-download-simple" style="margin-right:8px"></i> აპლიკაციის დაყენება</button>
+    <button id="installBtn"><i class="ph-bold ph-download-simple"></i> დააყენე</button>
 </div>
 
 <script>
-    // --- PWA LOGIC ---
+    // --- PWA ---
     let deferredPrompt; const installBtn = document.getElementById('installBtn');
-    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'block'; });
-    installBtn.addEventListener('click', (e) => { installBtn.style.display = 'none'; deferredPrompt.prompt(); deferredPrompt = null; });
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'flex'; });
+    installBtn.addEventListener('click', (e) => { installBtn.style.display = 'none'; deferredPrompt.prompt(); });
     if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }); }
 
-    // --- WEATHER LOGIC ---
-    const LAT = 42.332771; const LON = 43.553488;
-    const API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,surface_pressure,wind_speed_10m,wind_direction_10m,visibility&hourly=temperature_2m,weather_code,precipitation_probability,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_sum,wind_speed_10m_max,wind_direction_10m_dominant&timezone=auto&forecast_days=10`;
-    const KA_DAYS = ['კვირა', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ']; const KA_MONTHS = ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'];
+    // --- LOGIC ---
+    const API_URL = "https://api.open-meteo.com/v1/forecast?latitude=42.332771&longitude=43.553488&current=temperature_2m,weather_code,wind_speed_10m,precipitation,is_day&hourly=temperature_2m,weather_code,precipitation_probability,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto&forecast_days=10";
 
-    const weatherIcons = { 0: {d: "sun", n: "moon", t: "მოწმენდილი"}, 1: {d: "sun-horizon", n: "moon-stars", t: "ძირითადად ნათელი"}, 2: {d: "cloud-sun", n: "cloud-moon", t: "ნაწილობრივ ღრუბლიანი"}, 3: {d: "cloud", n: "cloud", t: "მოღრუბლული"}, 45: {d: "cloud-fog", n: "cloud-fog", t: "ნისლი"}, 48: {d: "cloud-fog", n: "cloud-fog", t: "ჭირხლიანი ნისლი"}, 51: {d: "cloud-drizzle", n: "cloud-drizzle", t: "მსუბუქი ჟინჟღლი"}, 53: {d: "cloud-drizzle", n: "cloud-drizzle", t: "ჟინჟღლი"}, 55: {d: "cloud-drizzle", n: "cloud-drizzle", t: "ძლიერი ჟინჟღლი"}, 56: {d: "cloud-drizzle", n: "cloud-drizzle", t: "ყინვა-ჟინჟღლი"}, 57: {d: "cloud-drizzle", n: "cloud-drizzle", t: "ძლიერი ყინვა-ჟინჟღლი"}, 61: {d: "cloud-rain", n: "cloud-rain", t: "სუსტი წვიმა"}, 63: {d: "cloud-rain", n: "cloud-rain", t: "წვიმა"}, 65: {d: "cloud-rain-heavy", n: "cloud-rain-heavy", t: "ძლიერი წვიმა"}, 66: {d: "cloud-rain", n: "cloud-rain", t: "ყინვა-წვიმა"}, 67: {d: "cloud-rain-heavy", n: "cloud-rain-heavy", t: "ძლიერი ყინვა-წვიმა"}, 71: {d: "cloud-snow", n: "cloud-snow", t: "თოვლი"}, 73: {d: "cloud-snow", n: "cloud-snow", t: "თოვლი"}, 75: {d: "snow-flake", n: "snow-flake", t: "ძლიერი თოვლი"}, 77: {d: "cloud-snow", n: "cloud-snow", t: "თოვლის მარცვლები"}, 80: {d: "cloud-rain-heavy", n: "cloud-rain-heavy", t: "თავსხმა"}, 81: {d: "cloud-rain-heavy", n: "cloud-rain-heavy", t: "ძლიერი თავსხმა"}, 82: {d: "cloud-rain-heavy", n: "cloud-rain-heavy", t: "ძლიერი თავსხმა"}, 85: {d: "snow-flake", n: "snow-flake", t: "თოვლ-ჭყაპი"}, 86: {d: "snow-flake", n: "snow-flake", t: "ძლიერი თოვლ-ჭყაპი"}, 95: {d: "cloud-lightning", n: "cloud-lightning", t: "ჭექა-ქუხილი"}, 96: {d: "cloud-lightning-hail", n: "cloud-lightning-hail", t: "სეტყვა"}, 99: {d: "cloud-lightning-hail", n: "cloud-lightning-hail", t: "ძლიერი შტორმი"} };
-    function getIcon(code, isDay = 1) { const w = weatherIcons[code] || {d: "question", n: "question", t: "უცნობი"}; return { icon: isDay ? w.d : w.n, text: w.t }; }
-    function getWindDir(d) { const dirs = ['ჩრდ', 'ჩრდ-აღმ', 'აღმ', 'სამ-აღმ', 'სამ', 'სამ-დას', 'დას', 'ჩრდ-დას']; return dirs[Math.round(d / 45) % 8]; }
-    function formatKaDate(dateStr) { const d = new Date(dateStr); return { day: KA_DAYS[d.getDay()], full: `${d.getDate()} ${KA_MONTHS[d.getMonth()]}` }; }
+    const KA_DAYS = ['კვირა', 'ორშაბათი', 'სამშაბათი', 'ოთხშაბათი', 'ხუთშაბათი', 'პარასკევი', 'შაბათი'];
+    
+    // Fun Phrases Generator
+    function getVerdict(temp, rain, wind, code, isDay) {
+        // 1. Catastrophe
+        if (code >= 95) return { title: "აპოკალიფსია!", sub: "გარეთ ცხვირი არ გაყო.", emoji: "⛈️" };
+        if (wind > 30) return { title: "სახურავს ახდის!", sub: "ისეთი ქარია, დაგაფრენს.", emoji: "🌪️" };
+        if (rain > 15) return { title: "წვიმა კი არა, წარღვნაა", sub: "გახსენი ღვინო და დაჯექი სახლში.", emoji: "🍷" };
+        
+        // 2. Cold
+        if (temp < 0) return { title: "ყინავს ძმაო", sub: "ჩაიცვი თბილად, ბუხარი დაანთე.", emoji: "🥶" };
+        
+        // 3. Perfect Hunting
+        if ([51,53,61,45,2,3].includes(code) && wind < 15 && isDay) {
+            return { title: "ტყე გეძახის!", sub: "ნადირობისთვის იდეალური პირობებია.", emoji: "🦌" };
+        }
 
-    // --- ELEGANT ADVICE LOGIC ---
-    function getTacticalAdvice(code, wind, rain) {
-        // Danger / Bad Weather
-        if (code >= 95 || wind > 25 || rain > 10) {
-            return { t: "ამინდი არამდგრადია", s: "რეკომენდირებულია შენობაში დარჩენა.", i: "warning-circle", bg: "linear-gradient(135deg, #f87171, #dc2626)" };
+        // 4. Perfect Feasting
+        if (rain === 0 && temp > 15 && isDay) {
+            return { title: "საქეიფოა!", sub: "აბა ჰე, მწვადები შეყარე!", emoji: "🍖" };
         }
-        // Good Hunting Conditions (Cloudy/Foggy/Drizzle + Low Wind)
-        if ([51, 53, 55, 61, 45, 48, 2, 3].includes(code) && wind < 15) {
-            return { t: "იდეალური პირობები ნადირობისთვის", s: "დაბალი ხილვადობა და სუსტი ქარი ხელსაყრელია.", i: "crosshair", bg: "linear-gradient(135deg, #34d399, #059669)" };
-        }
-        // Fair Weather (Feasting)
-        return { t: "მშვენიერი დღეა შეკრებისთვის", s: "ამინდი ხელს უწყობს ბუნებაში ყოფნას და სუფრას.", i: "wine", bg: "linear-gradient(135deg, #60a5fa, #2563eb)" };
+
+        // 5. Normal
+        if (!isDay) return { title: "ღამე მშვიდობისა", sub: "ხვალ ახალი დღე იქნება.", emoji: "🌙" };
+        return { title: "სტანდარტული სიტუაცია", sub: "არც ცივა, არც ცხელა.", emoji: "🤷‍♂️" };
     }
+
+    // Score Calculator (0-100%)
+    function getScores(temp, rain, wind, code) {
+        // Hunt Score
+        let hunt = 50; 
+        if(wind > 20) hunt -= 30; if(wind < 10) hunt += 20;
+        if(rain > 5) hunt -= 20; if([45,48,2,3].includes(code)) hunt += 20; // Fog is good
+        if(code >= 95) hunt = 0;
+        
+        // Fish Score
+        let fish = 60;
+        if(code === 2 || code === 3) fish += 30; // Cloudy is good
+        if(rain > 0 && rain < 5) fish += 20; // Light rain is good
+        if(code < 2) fish -= 20; // Bright sun is bad
+        
+        // Feast Score
+        let feast = 50;
+        if(rain === 0) feast += 30;
+        if(temp > 18) feast += 20;
+        if(wind > 15) feast -= 30;
+        if(rain > 0) feast = 10;
+
+        return { 
+            hunt: Math.min(100, Math.max(0, hunt)), 
+            fish: Math.min(100, Math.max(0, fish)), 
+            feast: Math.min(100, Math.max(0, feast)) 
+        };
+    }
+
+    const ICONS = { 0:"sun", 1:"sun-horizon", 2:"cloud-sun", 3:"cloud", 45:"cloud-fog", 61:"cloud-rain", 71:"cloud-snow", 95:"cloud-lightning" };
+    function getIcon(c) { return ICONS[c] || "cloud-sun"; }
 
     async function init() {
         try {
-            const res = await fetch(API_URL); if(!res.ok) throw new Error(); const data = await res.json(); if (!data.current) throw new Error(); render(data);
-        } catch (e) { document.getElementById('app').innerHTML = `<div class="glass" style="text-align:center; color:var(--accent-red);"><h3>კავშირი ვერ დამყარდა</h3></div>`; }
+            const res = await fetch(API_URL); const data = await res.json(); render(data);
+        } catch(e) { document.getElementById('app').innerHTML = `<h3 style="text-align:center; margin-top:50px;">ინტერნეტი გაითიშა ❌</h3>`; }
     }
 
     function render(data) {
-        const cur = data.current; const daily = data.daily; const hourly = data.hourly; const wInfo = getIcon(cur.weather_code, cur.is_day);
-        const visibility = cur.visibility ? (cur.visibility/1000).toFixed(1) + " კმ" : "--";
-        const advice = getTacticalAdvice(cur.weather_code, cur.wind_speed_10m, cur.precipitation);
+        const cur = data.current;
+        const verdict = getVerdict(cur.temperature_2m, cur.precipitation, cur.wind_speed_10m, cur.weather_code, cur.is_day);
+        const scores = getScores(cur.temperature_2m, cur.precipitation, cur.wind_speed_10m, cur.weather_code);
 
         let html = `
-            <div class="glass hero">
-                <div class="hero-top">
-                    <div><div class="temp-huge">${Math.round(cur.temperature_2m)}°</div><div class="condition-text">${wInfo.text}</div><div class="feels-like">შეგრძნება: ${Math.round(cur.apparent_temperature)}°</div></div>
-                    <div class="condition-icon"><i class="ph-fill ph-${wInfo.icon}"></i></div>
-                </div>
-                <div style="margin-top:30px; display:flex; gap:20px;">
-                     <div style="display:flex; align-items:center; gap:8px;"><i class="ph-fill ph-drop" style="color:var(--accent-blue);"></i><div><span style="font-weight:700;">${cur.relative_humidity_2m}%</span> <span style="color:var(--text-muted); font-size:0.8rem;">ტენიანობა</span></div></div>
-                     <div style="display:flex; align-items:center; gap:8px;"><i class="ph-fill ph-eye" style="color:var(--accent-green);"></i><div><span style="font-weight:700;">${visibility}</span> <span style="color:var(--text-muted); font-size:0.8rem;">ხილვადობა</span></div></div>
+            <div class="verdict-card">
+                <span class="verdict-emoji">${verdict.emoji}</span>
+                <div class="verdict-title">${verdict.title}</div>
+                <div class="verdict-sub">${verdict.sub}</div>
+                
+                <div class="verdict-stats">
+                    <div class="v-stat"><div class="v-val">${Math.round(cur.temperature_2m)}°</div><div class="v-lbl">ტემპ.</div></div>
+                    <div class="v-stat"><div class="v-val">${cur.wind_speed_10m}</div><div class="v-lbl">ქარი</div></div>
+                    <div class="v-stat"><div class="v-val">${cur.precipitation}</div><div class="v-lbl">წვიმა</div></div>
                 </div>
             </div>
 
-            <div class="advice-box" style="background:${advice.bg};">
-                <div class="advice-icon"><i class="ph-fill ph-${advice.i}"></i></div>
-                <div><div class="advice-text">${advice.t}</div><div class="advice-sub">${advice.s}</div></div>
+            <div class="section-title"><i class="ph-fill ph-chart-bar"></i> წარმატების შანსი</div>
+            <div class="activity-grid">
+                <div class="act-card" style="border-color:${scores.hunt > 70 ? 'var(--accent-green)' : 'transparent'}">
+                    <div class="act-icon" style="color:var(--accent-green)">🦌</div>
+                    <div class="act-name">ნადირობა</div>
+                    <div class="act-percent">${scores.hunt}%</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:${scores.hunt}%; background:var(--accent-green)"></div></div>
+                </div>
+                <div class="act-card" style="border-color:${scores.fish > 70 ? 'var(--accent-blue)' : 'transparent'}">
+                    <div class="act-icon" style="color:var(--accent-blue)">🎣</div>
+                    <div class="act-name">თევზაობა</div>
+                    <div class="act-percent">${scores.fish}%</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:${scores.fish}%; background:var(--accent-blue)"></div></div>
+                </div>
+                <div class="act-card" style="border-color:${scores.feast > 70 ? 'var(--accent-orange)' : 'transparent'}">
+                    <div class="act-icon" style="color:var(--accent-orange)">🍷</div>
+                    <div class="act-name">ქეიფი</div>
+                    <div class="act-percent">${scores.feast}%</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:${scores.feast}%; background:var(--accent-orange)"></div></div>
+                </div>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-box wind-box"><div class="stat-label"><i class="ph-fill ph-wind"></i> ქარი და მიმართულება</div><div class="wind-val"><i class="ph-bold ph-arrow-up" style="transform:rotate(${cur.wind_direction_10m}deg); color:var(--accent-gold);"></i><div>${cur.wind_speed_10m} <span style="font-size:0.8em; color:var(--text-muted);">კმ/სთ</span> <span style="font-size:0.9rem; color:var(--accent-gold); font-weight:600;">${getWindDir(cur.wind_direction_10m)}</span></div></div></div>
-                <div class="stat-box"><div class="stat-label"><i class="ph-fill ph-gauge"></i> წნევა</div><div class="stat-value">${cur.surface_pressure} <span style="font-size:0.7em; color:var(--text-muted);">hPa</span></div></div>
-                <div class="stat-box"><div class="stat-label"><i class="ph-fill ph-sun-horizon"></i> მზე ამოდის</div><div class="stat-value">${new Date(daily.sunrise[0]).toLocaleTimeString('ka-GE', {hour:'2-digit', minute:'2-digit'})}</div></div>
+            <div class="section-title"><i class="ph-fill ph-clock-afternoon"></i> დღის გეგმა</div>
+            <div class="scroll-container">
+                ${data.hourly.time.slice(0,24).map((t, i) => {
+                    const hTime = new Date(t);
+                    if (hTime < new Date()) return ''; // Don't show past hours
+                    return `
+                    <div class="hour-pill">
+                        <div class="h-time">${hTime.getHours()}:00</div>
+                        <div class="h-icon"><i class="ph-fill ph-${getIcon(data.hourly.weather_code[i])}"></i></div>
+                        <div class="h-temp">${Math.round(data.hourly.temperature_2m[i])}°</div>
+                    </div>`;
+                }).join('')}
             </div>
-            
-            <div class="section-title"><i class="ph-fill ph-clock"></i> დღის პროგნოზი (24სთ)</div>
-            <div class="scroll-container">`;
-        
-        const now = new Date(); const startIdx = Math.max(0, hourly.time.findIndex(t => new Date(t) >= now));
-        for(let i=0; i<24; i++) {
-            let idx = startIdx+i; if(idx>=hourly.time.length) break;
-            html += `<div class="hourly-card"><div class="h-time">${new Date(hourly.time[idx]).getHours()}:00</div><div class="h-icon"><i class="ph-fill ph-${getIcon(hourly.weather_code[idx], hourly.is_day[idx]).icon}"></i></div><div class="h-temp">${Math.round(hourly.temperature_2m[idx])}°</div><div style="font-size:0.8rem; font-weight:600; color:${hourly.precipitation_probability[idx]>30?'var(--accent-blue)':'var(--text-muted)'}">${hourly.precipitation_probability[idx]}%</div></div>`;
-        }
-        html += `</div><div class="section-title" style="margin-top:35px;"><i class="ph-fill ph-calendar-blank"></i> 10 დღის მიმოხილვა</div><div class="glass" style="padding:10px 25px;">`;
-        for(let i=0; i<10; i++) {
-            let dObj = formatKaDate(daily.time[i]);
-            html += `<div class="daily-row"><div><span class="d-day">${i===0?'დღეს':dObj.day}</span> <span class="d-date">${dObj.full}</span></div><div style="text-align:center; font-size:0.9rem; font-weight:700; color:${daily.precipitation_sum[i]>0?'var(--accent-blue)':'var(--text-muted)'};"><i class="ph-fill ph-drop" style="margin-right:4px;"></i>${Math.round(daily.precipitation_sum[i])}</div><div class="d-icon"><i class="ph-fill ph-${getIcon(daily.weather_code[i]).icon}"></i></div><div class="d-temps">${Math.round(daily.temperature_2m_max[i])}° <span class="d-min">${Math.round(daily.temperature_2m_min[i])}°</span></div></div>`;
-        }
-        html += `</div>`;
+
+            <div class="section-title" style="margin-top:30px;"><i class="ph-fill ph-calendar-blank"></i> 10 დღის პროგნოზი</div>
+            <div>
+                ${data.daily.time.map((t, i) => `
+                <div class="day-row">
+                    <div class="d-left">
+                        <div class="d-icon"><i class="ph-fill ph-${getIcon(data.daily.weather_code[i])}"></i></div>
+                        <div class="d-info">
+                            <h4>${i===0 ? 'დღეს' : KA_DAYS[new Date(t).getDay()]}</h4>
+                            <span>${data.daily.precipitation_sum[i] > 0 ? 'წვიმა: '+data.daily.precipitation_sum[i]+'მმ' : 'მშრალი'}</span>
+                        </div>
+                    </div>
+                    <div class="d-right">
+                        <div class="d-high">${Math.round(data.daily.temperature_2m_max[i])}°</div>
+                        <div class="d-low">${Math.round(data.daily.temperature_2m_min[i])}°</div>
+                    </div>
+                </div>`).join('')}
+            </div>
+        `;
         document.getElementById('app').innerHTML = html;
     }
-    init(); setInterval(init, 600000);
+    
+    init();
 </script>
+<style> @keyframes spin { 100% { transform: rotate(360deg); } } </style>
 </body>
 </html>
