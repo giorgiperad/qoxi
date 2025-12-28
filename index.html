@@ -7,9 +7,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Darka">
+    <meta name="apple-mobile-web-app-title" content="დარყა">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2910/2910768.png">
-    <title>Darka Meteo</title>
+    <title>ლაშკინის მეტეო სადგური</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -35,46 +35,52 @@
             padding-bottom: 80px;
         }
 
-        /* NEW HEADER STYLE */
+        /* HEADER */
         .main-header {
             background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            padding: 20px 20px 40px 20px;
+            padding: 25px 25px 45px 25px;
             border-radius: 0 0 35px 35px;
             box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
             margin-bottom: 25px;
         }
 
-        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .app-name { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px; opacity: 0.9; }
-        .refresh-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 8px; border-radius: 50%; cursor: pointer; transition: transform 0.2s; }
+        .top-bar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; }
+        
+        /* BRANDING STYLES */
+        .brand-box { display: flex; flex-direction: column; }
+        .app-name { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 6px; }
+        .app-subtitle { font-size: 0.8rem; opacity: 0.8; font-weight: 500; margin-top: 2px; letter-spacing: 0.3px; }
+
+        .refresh-btn { background: rgba(255,255,255,0.2); border: none; color: white; padding: 10px; border-radius: 50%; cursor: pointer; transition: transform 0.2s; margin-top: 5px; }
         .refresh-btn:active { transform: scale(0.95); }
 
         .current-weather { text-align: center; margin-top: 10px; }
-        .big-temp { font-size: 4.5rem; font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 5px; }
-        .condition-text { font-size: 1.1rem; font-weight: 500; opacity: 0.9; margin-bottom: 20px; text-transform: capitalize; }
+        .big-temp { font-size: 5rem; font-weight: 800; line-height: 1; letter-spacing: -3px; margin-bottom: 5px; }
+        .condition-text { font-size: 1.2rem; font-weight: 500; opacity: 0.9; margin-bottom: 25px; text-transform: capitalize; }
         
         .weather-stats {
-            display: flex; justify-content: center; gap: 25px;
+            display: flex; justify-content: center; gap: 30px;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(5px);
-            padding: 15px; border-radius: 20px;
-            max-width: 350px; margin: 0 auto;
+            padding: 15px 25px; border-radius: 20px;
+            max-width: fit-content; margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .stat-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-        .stat-val { font-weight: 700; font-size: 0.95rem; }
+        .stat-val { font-weight: 700; font-size: 1rem; }
         .stat-label { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
 
         .container { max-width: 550px; margin: 0 auto; padding: 0 20px; }
 
-        /* CARDS */
+        /* SECTIONS */
         .section-title {
-            font-size: 0.95rem; font-weight: 700; color: var(--text-muted);
-            margin: 25px 0 15px 0; display: flex; align-items: center; gap: 8px;
+            font-size: 0.9rem; font-weight: 700; color: var(--text-muted);
+            margin: 30px 0 15px 0; display: flex; align-items: center; gap: 8px;
             text-transform: uppercase; letter-spacing: 0.5px;
         }
 
-        /* PERCENTAGE GRID */
+        /* CARDS */
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 10px; }
         .p-card {
             background: var(--surface); padding: 15px 10px; border-radius: var(--radius);
@@ -82,11 +88,10 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         .p-icon { font-size: 1.6rem; margin-bottom: 8px; }
-        .p-name { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+        .p-name { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
         .p-val { font-size: 1rem; font-weight: 800; color: var(--text-dark); }
-        .ring-container { position: relative; width: 50px; height: 50px; margin-bottom: 5px; display:flex; align-items:center; justify-content:center; }
         
-        /* HOURLY SCROLL */
+        /* SCROLL */
         .scroll-wrap {
             display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px;
             margin: 0 -20px; padding-left: 20px; padding-right: 20px;
@@ -94,14 +99,14 @@
         }
         .scroll-wrap::-webkit-scrollbar { display: none; }
         .h-item {
-            min-width: 70px; background: var(--surface); padding: 15px 10px;
+            min-width: 75px; background: var(--surface); padding: 15px 10px;
             border-radius: 18px; text-align: center; box-shadow: var(--shadow);
         }
         .h-time { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
         .h-icon { font-size: 1.6rem; margin-bottom: 8px; color: var(--primary); }
-        .h-temp { font-weight: 700; font-size: 1rem; }
+        .h-temp { font-weight: 700; font-size: 1.1rem; }
 
-        /* DAILY LIST */
+        /* LIST */
         .day-item {
             display: flex; justify-content: space-between; align-items: center;
             background: var(--surface); padding: 16px 20px; border-radius: 18px;
@@ -114,10 +119,8 @@
         .d-temp { font-weight: 700; font-size: 1.1rem; text-align: right; }
         .d-low { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-left: 6px; }
 
-        /* LOADER */
         #loader { text-align:center; padding:50px; color:var(--text-muted); }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-
     </style>
 </head>
 <body>
@@ -127,88 +130,44 @@
     </div>
 
 <script>
-    // --- SETTINGS ---
     const LAT = 42.332771;
     const LON = 43.553488;
     const DAYS = ['კვირა', 'ორშაბათი', 'სამშაბათი', 'ოთხშაბათი', 'ხუთშაბათი', 'პარასკევი', 'შაბათი'];
     
-    // --- WEATHER CODES MAPPING ---
     const ICONS = {
-        0: {i:"sun", t:"მოწმენდილი"},
-        1: {i:"sun", t:"ძირითადად მზიანი"},
-        2: {i:"cloud-sun", t:"ნაწილობრივ ღრუბლიანი"},
-        3: {i:"cloud", t:"მოღრუბლული"},
-        45: {i:"cloud-fog", t:"ნისლი"},
-        48: {i:"cloud-fog", t:"ნისლი"},
-        51: {i:"cloud-drizzle", t:"მსუბუქი ჟინჟღლი"},
-        53: {i:"cloud-drizzle", t:"ჟინჟღლი"},
-        55: {i:"cloud-drizzle", t:"ძლიერი ჟინჟღლი"},
-        61: {i:"cloud-rain", t:"მსუბუქი წვიმა"},
-        63: {i:"cloud-rain", t:"წვიმა"},
-        65: {i:"cloud-rain", t:"ძლიერი წვიმა"},
-        71: {i:"cloud-snow", t:"მსუბუქი თოვლი"},
-        73: {i:"cloud-snow", t:"თოვლი"},
-        75: {i:"cloud-snow", t:"ძლიერი თოვლი"},
-        77: {i:"snowflake", t:"თოვლის მარცვლები"},
-        80: {i:"cloud-rain", t:"წვიმა"},
-        81: {i:"cloud-rain", t:"ძლიერი წვიმა"},
-        82: {i:"cloud-rain", t:"თავსხმა"},
-        85: {i:"cloud-snow", t:"თოვლჭყაპი"},
-        86: {i:"cloud-snow", t:"ძლიერი თოვლჭყაპი"},
-        95: {i:"cloud-lightning", t:"ჭექა-ქუხილი"},
-        96: {i:"cloud-lightning", t:"ჭექა-ქუხილი"},
-        99: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}
+        0: {i:"sun", t:"მოწმენდილი"}, 1: {i:"sun", t:"მზიანი"}, 2: {i:"cloud-sun", t:"ნაწილობრივ ღრუბლიანი"},
+        3: {i:"cloud", t:"მოღრუბლული"}, 45: {i:"cloud-fog", t:"ნისლი"}, 48: {i:"cloud-fog", t:"ნისლი"},
+        51: {i:"cloud-drizzle", t:"ჟინჟღლი"}, 53: {i:"cloud-drizzle", t:"ჟინჟღლი"}, 55: {i:"cloud-drizzle", t:"ჟინჟღლი"},
+        61: {i:"cloud-rain", t:"წვიმა"}, 63: {i:"cloud-rain", t:"წვიმა"}, 65: {i:"cloud-rain", t:"ძლიერი წვიმა"},
+        71: {i:"cloud-snow", t:"თოვლი"}, 73: {i:"cloud-snow", t:"თოვლი"}, 75: {i:"cloud-snow", t:"ძლიერი თოვლი"},
+        77: {i:"snowflake", t:"თოვლი"}, 80: {i:"cloud-rain", t:"წვიმა"}, 81: {i:"cloud-rain", t:"ძლიერი წვიმა"},
+        82: {i:"cloud-rain", t:"თავსხმა"}, 85: {i:"cloud-snow", t:"თოვლჭყაპი"}, 86: {i:"cloud-snow", t:"თოვლჭყაპი"},
+        95: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}, 96: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}, 99: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}
     };
 
     function getWeatherInfo(code, isDay = 1) {
         let info = ICONS[code] || {i:"cloud", t:"უცნობია"};
         let icon = info.i;
-        // Night mode toggle for clear skies
         if (!isDay && (code === 0 || code === 1)) icon = "moon";
         if (!isDay && code === 2) icon = "cloud-moon";
         return { icon: icon, text: info.t };
     }
 
-    // --- SCORE CALCULATION (Hunting/Fishing) ---
     function calcScores(t, r, w, c) {
         let h = 60, f = 60, x = 60;
-        
-        // Hunt Logic
-        if(w < 10) h += 20; 
-        if(w > 20) h -= 30;
-        if([45,48,2,3].includes(c)) h += 20; // Good cover
-        if(r > 5) h -= 20;
-        
-        // Fish Logic
-        if(c === 3 || c === 2) f += 25; // Clouds are good
-        if(r > 0 && r < 5) f += 15; // Light rain is good
-        if(c < 2) f -= 10; // Too bright
-        if(t < 5) f -= 20; // Too cold
-
-        // Feast Logic
-        if(r === 0) x += 30;
-        if(t > 18) x += 20;
-        if(w > 15) x -= 30;
-        if(r > 0) x = 10;
-
-        return { 
-             h: Math.min(100, Math.max(0, h)), 
-             f: Math.min(100, Math.max(0, f)), 
-             x: Math.min(100, Math.max(0, x)) 
-        };
+        if(w < 10) h += 20; if(w > 20) h -= 30; if([45,48,2,3].includes(c)) h += 20; if(r > 5) h -= 20;
+        if(c === 3 || c === 2) f += 25; if(r > 0 && r < 5) f += 15; if(c < 2) f -= 10; if(t < 5) f -= 20;
+        if(r === 0) x += 30; if(t > 18) x += 20; if(w > 15) x -= 30; if(r > 0) x = 10;
+        return { h: Math.min(100, Math.max(0, h)), f: Math.min(100, Math.max(0, f)), x: Math.min(100, Math.max(0, x)) };
     }
 
     async function init() {
-        const API = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code,wind_speed_10m,precipitation,is_day&hourly=temperature_2m,weather_code,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto&forecast_days=10`;
-        
         try {
-            const res = await fetch(API);
-            if(!res.ok) throw new Error("API Error");
+            const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,weather_code,wind_speed_10m,precipitation,is_day&hourly=temperature_2m,weather_code,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto&forecast_days=10`);
             const data = await res.json();
             render(data);
         } catch(e) {
-            console.error(e);
-            document.getElementById('app').innerHTML = '<div style="text-align:center;padding:50px;">ინტერნეტის შეცდომა ⚠️<br><br><button onclick="location.reload()" style="padding:10px 20px;">თავიდან ცდა</button></div>';
+            document.getElementById('app').innerHTML = '<div style="text-align:center;padding:50px;">შეცდომა!</div>';
         }
     }
 
@@ -216,24 +175,18 @@
         const cur = data.current;
         const wInfo = getWeatherInfo(cur.weather_code, cur.is_day);
         const scores = calcScores(cur.temperature_2m, cur.precipitation, cur.wind_speed_10m, cur.weather_code);
-
-        // Accurate Hourly Logic
+        
         const now = new Date();
-        const currentHour = now.getHours();
-        
-        // Find index in hourly array matching current hour (approximation by index since api starts at 00:00 today)
-        // More robust: find index where time string parses to >= now (roughly)
-        let startIdx = 0;
-        // Simple logic: The API usually returns "Today 00:00" as index 0. So current hour is approx the index.
-        // We will just shift by the current hour of the day.
-        startIdx = currentHour;
-        
+        const startIdx = now.getHours();
         const next24 = data.hourly.time.slice(startIdx, startIdx + 24);
 
         let html = `
             <div class="main-header">
                 <div class="top-bar">
-                    <div class="app-name"><i class="ph-bold ph-map-pin"></i> დარყა</div>
+                    <div class="brand-box">
+                        <div class="app-name"><i class="ph-bold ph-map-pin"></i> დარყა</div>
+                        <div class="app-subtitle">ლაშკინის მეტეო ცენტრი</div>
+                    </div>
                     <button class="refresh-btn" onclick="init()"><i class="ph-bold ph-arrows-clockwise"></i></button>
                 </div>
                 
@@ -245,20 +198,19 @@
                         <div class="stat-item">
                             <i class="ph-fill ph-wind" style="font-size:1.2rem;"></i>
                             <span class="stat-val">${cur.wind_speed_10m}</span>
-                            <span class="stat-label">ქარი (კმ/სთ)</span>
+                            <span class="stat-label">ქარი</span>
                         </div>
-                        <div class="stat-item" style="border-left:1px solid rgba(255,255,255,0.3); padding-left:20px;">
+                        <div class="stat-item" style="border-left:1px solid rgba(255,255,255,0.3); padding-left:25px;">
                             <i class="ph-fill ph-drop" style="font-size:1.2rem;"></i>
                             <span class="stat-val">${cur.precipitation}</span>
-                            <span class="stat-label">ნალექი (მმ)</span>
+                            <span class="stat-label">ნალექი</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                
-                <div class="section-title"><i class="ph-fill ph-sliders-horizontal"></i> აქტივობების ინდექსი</div>
+                <div class="section-title"><i class="ph-fill ph-sliders-horizontal"></i> ინდექსები</div>
                 <div class="grid-3">
                     <div class="p-card">
                         <div class="p-icon" style="color:#10b981">🦌</div>
@@ -277,21 +229,17 @@
                     </div>
                 </div>
 
-                <div class="section-title"><i class="ph-fill ph-clock-afternoon"></i> დღის ამინდი (24სთ)</div>
+                <div class="section-title"><i class="ph-fill ph-clock-afternoon"></i> დღის ამინდი</div>
                 <div class="scroll-wrap">
                     ${next24.map((t, i) => {
                         const idx = startIdx + i;
-                        if (!data.hourly.temperature_2m[idx]) return ''; // safety
-                        const hTime = new Date(t);
-                        const hCode = data.hourly.weather_code[idx];
-                        const hIsDay = data.hourly.is_day[idx];
-                        const iconObj = getWeatherInfo(hCode, hIsDay);
-                        
+                        if(!data.hourly.temperature_2m[idx]) return '';
+                        const hInfo = getWeatherInfo(data.hourly.weather_code[idx], data.hourly.is_day[idx]);
                         return `
                         <div class="h-item">
-                            <div class="h-time">${hTime.getHours()}:00</div>
-                            <div class="h-icon" style="color:${hIsDay ? '#f59e0b' : '#64748b'}">
-                                <i class="ph-fill ph-${iconObj.icon}"></i>
+                            <div class="h-time">${new Date(t).getHours()}:00</div>
+                            <div class="h-icon" style="color:${data.hourly.is_day[idx] ? '#f59e0b' : '#64748b'}">
+                                <i class="ph-fill ph-${hInfo.icon}"></i>
                             </div>
                             <div class="h-temp">${Math.round(data.hourly.temperature_2m[idx])}°</div>
                         </div>`;
@@ -301,17 +249,14 @@
                 <div class="section-title" style="margin-top:30px;"><i class="ph-fill ph-calendar-blank"></i> 10 დღის პროგნოზი</div>
                 <div>
                     ${data.daily.time.map((t, i) => {
-                        const dCode = data.daily.weather_code[i];
-                        const iconObj = getWeatherInfo(dCode, 1);
-                        const dayName = i === 0 ? 'დღეს' : DAYS[new Date(t).getDay()];
-                        
+                        const dInfo = getWeatherInfo(data.daily.weather_code[i]);
                         return `
                         <div class="day-item">
                             <div class="d-left">
-                                <div class="d-icon"><i class="ph-fill ph-${iconObj.icon}"></i></div>
+                                <div class="d-icon"><i class="ph-fill ph-${dInfo.icon}"></i></div>
                                 <div class="d-date">
-                                    <h4>${dayName}</h4>
-                                    <span>${iconObj.text}</span>
+                                    <h4>${i===0?'დღეს':DAYS[new Date(t).getDay()]}</h4>
+                                    <span>${dInfo.text}</span>
                                 </div>
                             </div>
                             <div class="d-temp">
@@ -325,7 +270,6 @@
         `;
         document.getElementById('app').innerHTML = html;
     }
-
     init();
 </script>
 </body>
