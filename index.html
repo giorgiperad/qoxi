@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="დარყა">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2910/2910768.png">
-    <title>ლაშკინის მეტეო სადგური</title>
+    <title>Lashkin Meteo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -22,7 +22,6 @@
             --text-muted: #64748b;
             --primary: #2563eb;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            --radius: 20px;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -46,8 +45,6 @@
         }
 
         .top-bar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 25px; }
-        
-        /* BRANDING STYLES */
         .brand-box { display: flex; flex-direction: column; }
         .app-name { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; display: flex; align-items: center; gap: 6px; }
         .app-subtitle { font-size: 0.8rem; opacity: 0.8; font-weight: 500; margin-top: 2px; letter-spacing: 0.3px; }
@@ -72,46 +69,48 @@
         .stat-label { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
 
         .container { max-width: 550px; margin: 0 auto; padding: 0 20px; }
+        .section-title { font-size: 0.9rem; font-weight: 700; color: var(--text-muted); margin: 30px 0 15px 0; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* SECTIONS */
-        .section-title {
-            font-size: 0.9rem; font-weight: 700; color: var(--text-muted);
-            margin: 30px 0 15px 0; display: flex; align-items: center; gap: 8px;
-            text-transform: uppercase; letter-spacing: 0.5px;
+        /* HUNTING CARD (NEW) */
+        .hunt-card {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+            display: flex; justify-content: space-between; align-items: center;
+            position: relative; overflow: hidden;
+            margin-bottom: 30px;
         }
-
-        /* CARDS */
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 10px; }
-        .p-card {
-            background: var(--surface); padding: 15px 10px; border-radius: var(--radius);
-            text-align: center; box-shadow: var(--shadow);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .p-icon { font-size: 1.6rem; margin-bottom: 8px; }
-        .p-name { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
-        .p-val { font-size: 1rem; font-weight: 800; color: var(--text-dark); }
+        .hunt-content { z-index: 2; position: relative; }
+        .hunt-label { font-size: 0.75rem; text-transform: uppercase; opacity: 0.9; letter-spacing: 1px; font-weight: 600; margin-bottom: 5px; }
+        .hunt-verdict { font-size: 1.3rem; font-weight: 800; line-height: 1.2; margin-bottom: 5px; }
+        .hunt-details { font-size: 0.85rem; opacity: 0.9; display: flex; gap: 10px; align-items: center; }
         
+        .hunt-score-box { 
+            z-index: 2; 
+            background: rgba(255,255,255,0.2); 
+            backdrop-filter: blur(5px);
+            border-radius: 16px;
+            padding: 10px 15px;
+            text-align: center;
+            min-width: 80px;
+        }
+        .hunt-percent { font-size: 1.8rem; font-weight: 800; }
+        .hunt-sub { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+
+        .hunt-bg-icon { position: absolute; right: -10px; bottom: -20px; font-size: 8rem; opacity: 0.15; transform: rotate(-10deg); z-index: 1; pointer-events: none; }
+
         /* SCROLL */
-        .scroll-wrap {
-            display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px;
-            margin: 0 -20px; padding-left: 20px; padding-right: 20px;
-            scrollbar-width: none;
-        }
+        .scroll-wrap { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 15px; margin: 0 -20px; padding-left: 20px; padding-right: 20px; scrollbar-width: none; }
         .scroll-wrap::-webkit-scrollbar { display: none; }
-        .h-item {
-            min-width: 75px; background: var(--surface); padding: 15px 10px;
-            border-radius: 18px; text-align: center; box-shadow: var(--shadow);
-        }
+        .h-item { min-width: 75px; background: var(--surface); padding: 15px 10px; border-radius: 18px; text-align: center; box-shadow: var(--shadow); }
         .h-time { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
         .h-icon { font-size: 1.6rem; margin-bottom: 8px; color: var(--primary); }
         .h-temp { font-weight: 700; font-size: 1.1rem; }
 
         /* LIST */
-        .day-item {
-            display: flex; justify-content: space-between; align-items: center;
-            background: var(--surface); padding: 16px 20px; border-radius: 18px;
-            margin-bottom: 12px; box-shadow: var(--shadow);
-        }
+        .day-item { display: flex; justify-content: space-between; align-items: center; background: var(--surface); padding: 16px 20px; border-radius: 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
         .d-left { display: flex; align-items: center; gap: 15px; }
         .d-icon { font-size: 1.8rem; color: var(--text-muted); width: 35px; text-align: center; }
         .d-date h4 { margin: 0; font-size: 1rem; font-weight: 600; }
@@ -140,9 +139,8 @@
         51: {i:"cloud-drizzle", t:"ჟინჟღლი"}, 53: {i:"cloud-drizzle", t:"ჟინჟღლი"}, 55: {i:"cloud-drizzle", t:"ჟინჟღლი"},
         61: {i:"cloud-rain", t:"წვიმა"}, 63: {i:"cloud-rain", t:"წვიმა"}, 65: {i:"cloud-rain", t:"ძლიერი წვიმა"},
         71: {i:"cloud-snow", t:"თოვლი"}, 73: {i:"cloud-snow", t:"თოვლი"}, 75: {i:"cloud-snow", t:"ძლიერი თოვლი"},
-        77: {i:"snowflake", t:"თოვლი"}, 80: {i:"cloud-rain", t:"წვიმა"}, 81: {i:"cloud-rain", t:"ძლიერი წვიმა"},
-        82: {i:"cloud-rain", t:"თავსხმა"}, 85: {i:"cloud-snow", t:"თოვლჭყაპი"}, 86: {i:"cloud-snow", t:"თოვლჭყაპი"},
-        95: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}, 96: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}, 99: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}
+        80: {i:"cloud-rain", t:"წვიმა"}, 81: {i:"cloud-rain", t:"ძლიერი წვიმა"}, 82: {i:"cloud-rain", t:"თავსხმა"},
+        85: {i:"cloud-snow", t:"თოვლჭყაპი"}, 95: {i:"cloud-lightning", t:"ჭექა-ქუხილი"}
     };
 
     function getWeatherInfo(code, isDay = 1) {
@@ -153,12 +151,21 @@
         return { icon: icon, text: info.t };
     }
 
-    function calcScores(t, r, w, c) {
-        let h = 60, f = 60, x = 60;
-        if(w < 10) h += 20; if(w > 20) h -= 30; if([45,48,2,3].includes(c)) h += 20; if(r > 5) h -= 20;
-        if(c === 3 || c === 2) f += 25; if(r > 0 && r < 5) f += 15; if(c < 2) f -= 10; if(t < 5) f -= 20;
-        if(r === 0) x += 30; if(t > 18) x += 20; if(w > 15) x -= 30; if(r > 0) x = 10;
-        return { h: Math.min(100, Math.max(0, h)), f: Math.min(100, Math.max(0, f)), x: Math.min(100, Math.max(0, x)) };
+    // HUNTING LOGIC ONLY
+    function calcHuntScore(r, w, c) {
+        let h = 60;
+        if(w < 10) h += 20; 
+        if(w > 20) h -= 30;
+        if([45,48,2,3].includes(c)) h += 20; // Cloud cover is good
+        if(r > 5) h -= 20; // Heavy rain bad
+        if(r > 0 && r <= 5) h += 5; // Light rain okay to hide scent
+        return Math.min(100, Math.max(0, h));
+    }
+
+    function getHuntText(score) {
+        if(score >= 80) return "ტყე გეძახის! იდეალურია.";
+        if(score >= 50) return "პირობები ნორმალურია.";
+        return "დღეს სახლში დარჩი.";
     }
 
     async function init() {
@@ -174,7 +181,9 @@
     function render(data) {
         const cur = data.current;
         const wInfo = getWeatherInfo(cur.weather_code, cur.is_day);
-        const scores = calcScores(cur.temperature_2m, cur.precipitation, cur.wind_speed_10m, cur.weather_code);
+        
+        const huntScore = calcHuntScore(cur.precipitation, cur.wind_speed_10m, cur.weather_code);
+        const huntText = getHuntText(huntScore);
         
         const now = new Date();
         const startIdx = now.getHours();
@@ -210,22 +219,17 @@
             </div>
 
             <div class="container">
-                <div class="section-title"><i class="ph-fill ph-sliders-horizontal"></i> ინდექსები</div>
-                <div class="grid-3">
-                    <div class="p-card">
-                        <div class="p-icon" style="color:#10b981">🦌</div>
-                        <div class="p-val" style="color:#10b981">${scores.h}%</div>
-                        <div class="p-name">ნადირობა</div>
+                
+                <div class="hunt-card">
+                    <div class="hunt-bg-icon">🦌</div>
+                    <div class="hunt-content">
+                        <div class="hunt-label"><i class="ph-fill ph-crosshair"></i> ნადირობა</div>
+                        <div class="hunt-verdict">${huntText}</div>
+                        <div class="hunt-details">ქარი: ${cur.wind_speed_10m} კმ/სთ</div>
                     </div>
-                    <div class="p-card">
-                        <div class="p-icon" style="color:#3b82f6">🎣</div>
-                        <div class="p-val" style="color:#3b82f6">${scores.f}%</div>
-                        <div class="p-name">თევზაობა</div>
-                    </div>
-                    <div class="p-card">
-                        <div class="p-icon" style="color:#f59e0b">🍷</div>
-                        <div class="p-val" style="color:#f59e0b">${scores.x}%</div>
-                        <div class="p-name">ქეიფი</div>
+                    <div class="hunt-score-box">
+                        <div class="hunt-percent">${huntScore}%</div>
+                        <div class="hunt-sub">ინდექსი</div>
                     </div>
                 </div>
 
